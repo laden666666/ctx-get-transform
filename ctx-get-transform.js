@@ -63,10 +63,10 @@ function monkeyPatchCtxToAddGetTransform(ctx) {
   ;(function(transform) {
     ctx.transform = function tTransform(a, b, c, d, e, f){
       m3scratch[0] = a;
-      m3scratch[1] = c;
-      m3scratch[2] = e;
-      m3scratch[3] = b;
-      m3scratch[4] = d;
+      m3scratch[1] = b;
+      m3scratch[2] = c;
+      m3scratch[3] = d;
+      m3scratch[4] = e;
       m3scratch[5] = f;
 
       mat2d.multiply(mat, mat, m3scratch);
@@ -77,10 +77,10 @@ function monkeyPatchCtxToAddGetTransform(ctx) {
   ;(function(setTransform) {
     ctx.setTransform = function tSetTransform(a, b, c, d, e, f){
       mat[0] = a;
-      mat[1] = c;
-      mat[2] = e;
-      mat[3] = b;
-      mat[4] = d;
+      mat[1] = b;
+      mat[2] = c;
+      mat[3] = d;
+      mat[4] = e;
       mat[5] = f;
       return setTransform.call(ctx, a, b, c, d, e, f);
     };
